@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Profile README Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="aligner">
+    <span class="pageTitle">Add an introduction</span>
+    <div class="checkcon">
+    <input type="checkbox"  id="cwo" class="checkbox cent" onclick="readonly(this, document.querySelectorAll('.currworkon'))">
+    <label for="cwo">🔭 I'm currently working on </label>
+    <input type="text" class="currworkon answer" placeholder="what are you working on?" readonly> 
+    <input type="text" class="currworkon answer" placeholder="project link (if needed)" readonly> 
+    </div>
+    <br>
+    <br>
+    <div class="checkcon">
+        <input type="checkbox"  id="co" class="checkbox cent" onclick="readonly(this, document.querySelectorAll('.collon'))">
+        <label for="co">👯 I’m looking to collaborate on </label>
+        <input type="text" class="collon answer" placeholder="what do you want to collaborate on?" readonly> 
+        <input type="text" class="collon answer" placeholder="project link (if needed)" readonly> 
+    </div>
+    <br>
+    <br>
+    <div class="checkcon">
+        <input type="checkbox"  id="help" class="checkbox cent" onclick="readonly(this, document.querySelectorAll('.help'))">
+        <label for="help">🤝 I’m looking for help with </label>
+        <input type="text" class="help answer" placeholder="what are you stuck on?" readonly> 
+        <input type="text" class="help answer" placeholder="project link (if needed)" readonly> 
+    </div>
+    <br>
+    <br>
+    <div class="checkcon">
+        <input type="checkbox"  id="learn" class="checkbox cent" onclick="readonly(this, document.querySelectorAll('.learn'))">
+        <label for="learn">🌱 I’m currently learning </label>
+        <input type="text" class="learn answer" placeholder="what are you currently learning?" readonly> 
+        <input type="text" class="learn answer" placeholder="project link (if needed)" readonly> 
+    </div>
+    <br>
+    <br>
+    <div class="checkcon">
+        <input type="checkbox"  id="ab" class="checkbox cent" onclick="readonly(this, document.querySelectorAll('.ab'))">
+        <label for="ab">💬 Ask me about </label>
+        <input type="text" class="ab answer" placeholder="react, vue and golang" readonly> 
+    </div>
+    <br>
+    <br>
+    <div class="checkcon">
+        <input type="checkbox"  id="reach" class="checkbox cent" onclick="readonly(this, document.querySelectorAll('.reach'))">
+        <label for="reach">📫 How to reach me </label>
+        <input type="text" class="reach answer" placeholder="example@gmail.com" readonly> 
+    </div>
+    <br>
+    <br>
+    <div class="checkcon">
+        <input type="checkbox"  id="proj" class="checkbox cent" onclick="readonly(this, document.querySelectorAll('.proj'))">
+        <label for="proj">👨‍💻 All of my projects are available at </label>
+        <input type="text" class="proj answer" placeholder="projects link" readonly> 
+    </div>
+    <br>
+    <br>
+    <div class="checkcon">
+        <input type="checkbox"  id="blog" class="checkbox cent" onclick="readonly(this, document.querySelectorAll('.blog'))">
+        <label for="blog">📝 I regularly write articles on </label>
+        <input type="text" class="blog answer" placeholder="blog link" readonly> 
+    </div>
+    <br>
+    <br>
+    <div class="checkcon">
+        <input type="checkbox"  id="exp" class="checkbox cent" onclick="readonly(this, document.querySelectorAll('.exp'))">
+        <label for="exp">📄 See my resume </label>
+        <input type="text" class="exp answer" placeholder="link to resume" readonly> 
+    </div>
+    <br>
+    <br>
+    <div class="checkcon">
+        <input type="checkbox"  id="funfact" class="checkbox cent" onclick="readonly(this, document.querySelectorAll('.funfact'))">
+        <label for="funfact">⚡ Fun fact: </label>
+        <input type="text" class="funfact answer" placeholder="fun fact" readonly> 
+    </div>
+    <p class="cyan"><a class="noshow" onclick="about()">→</a></p>
+</div>
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Profile README Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="aligner">
+    <label class="border">
+        <input type="checkbox" id="border" class="invis toggle" checked>
+        <div class="switch">border</div>
+    </label>
+    <label class="lifetime">
+        <input type="checkbox" id="life" class="invis toggle">
+        <div class="switch">lifetime commits</div>
+    </label>
+    <label style="display: inline-flex;">Theme: <select id="theme" class="theme"><option value="radical" class="themeopt">radical</option><option value="default" class="themeopt">default</option><option value="shadow_red" class="themeopt">shadow red</option><option value="shadow_green" class="themeopt">shadow green</option><option value="shadow_blue" class="themeopt">shadow blue</option><option value="transparent" class="themeopt">transparent</option><option value="dark" class="themeopt">dark</option><option value="merko" class="themeopt">merko</option><option value="gruvbox" class="themeopt">gruvbox</option><option value="gruvbox_light" class="themeopt">gruvbox light</option><option value="tokyonight" class="themeopt">tokyonight</option><option value="onedark" class="themeopt">onedark</option><option value="cobalt" class="themeopt">cobalt</option><option value="synthwave" class="themeopt">synthwave</option><option value="highcontrast" class="themeopt">highcontrast</option><option value="dracula" class="themeopt">dracula</option><option value="prussian" class="themeopt">prussian</option><option value="monokai" class="themeopt">monokai</option><option value="vue" class="themeopt">vue</option><option value="vue-dark" class="themeopt">vue-dark</option><option value="shades-of-purple" class="themeopt">shades-of-purple</option><option value="nightowl" class="themeopt">nightowl</option><option value="buefy" class="themeopt">buefy</option><option value="blue-green" class="themeopt">blue-green</option><option value="algolia" class="themeopt">algolia</option><option value="great-gatsby" class="themeopt">great-gatsby</option><option value="darcula" class="themeopt">darcula</option><option value="bear" class="themeopt">bear</option><option value="solarized-dark" class="themeopt">solarized-dark</option><option value="solarized-light" class="themeopt">solarized-light</option><option value="chartreuse-dark" class="themeopt">chartreuse-dark</option><option value="nord" class="themeopt">nord</option><option value="gotham" class="themeopt">gotham</option><option value="material-palenight" class="themeopt">material-palenight</option><option value="graywhite" class="themeopt">graywhite</option><option value="vision-friendly-dark" class="themeopt">vision-friendly-dark</option><option value="ayu-mirage" class="themeopt">ayu-mirage</option><option value="midnight-purple" class="themeopt">midnight-purple</option><option value="calm" class="themeopt">calm</option><option value="flag-india" class="themeopt">flag-india</option><option value="omni" class="themeopt">omni</option><option value="react" class="themeopt">react</option><option value="jolly" class="themeopt">jolly</option><option value="maroongold" class="themeopt">maroongold</option><option value="yeblu" class="themeopt">yeblu</option><option value="blueberry" class="themeopt">blueberry</option><option value="slateorange" class="themeopt">slateorange</option><option value="kacho_ga" class="themeopt">kacho_ga</option><option value="outrun" class="themeopt">outrun</option><option value="city_lights" class="themeopt">city lights</option><option value="swift" class="themeopt">swift</option></select>
+    </label>
+    <label style="display: inline-flex;">
+        Top langs layout: <select class="theme" id="topLang">
+            <option value="compact" class="themeopt">compact</option>
+            <option value="none" class="themeopt">default</option>
+            <option value="donut" class="themeopt">donut</option>
+            <option value="donut-vertical" class="themeopt">donut vertical</option>
+            <option value="pie" class="themeopt">pie chart</option>
+            <option value="hide" class="themeopt">hidden progress bars</option>
+        </select>
+    </label>
+    <br>
+    <br>
+    <span>please wait for cards to load after you have changed anything.</span>
+    <br>
+    <br>
+    <span>click on the cards you want in your README.</span>
+    <br><br>
+    <label>
+    <input type="checkbox" class="invis imgToggle">
+    <img class="stat" id="norm" src="https://github-readme-stats.vercel.app/api?username=BobdaProgrammer&theme=radical">
+    </label>
+    <label>
+    <input type="checkbox" class="invis imgToggle">
+    <img class="stat" id="three" src="https://github-readme-streak-stats.herokuapp.com/?user=BobdaProgrammer&theme=radical&hide_border=false">
+    </label>
+    <label>
+        <input type="checkbox" class="invis imgToggle">
+        <img class="stat" id="langs" src="https://github-readme-stats.vercel.app/api/top-langs/?username=BobdaProgrammer&theme=radical&hide_border=false&include_all_commits=false&count_private=false&layout=compact">
+    </label>
+    <p class="cyan"><a class="noshow" onclick="Collectcards()">→</a></p>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
