@@ -42,9 +42,18 @@ function readonly(check, input) {
     }
   });
 }
-
 //set up github profile cards
 document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".lang").forEach((lang) => {
+      lang.addEventListener("click", function (event) {
+        let item = event.target;
+        if (item.style.border == "2px solid rgb(33, 119, 83)") {
+          item.style.border = "2px solid #00ff6e";
+        } else {
+          item.style.border = "2px solid #217753";
+        }
+      });
+    });
   if (window.location.pathname == "/stats.html") {
     username = sessionStorage.getItem("username")
     setCard(username, theme, text, lifetext, langsLayout)
@@ -53,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
   }
 });
+
 
 //updates github profile cards to user's preferances
 document.getElementById("topLang").addEventListener("change", function (event) {
@@ -139,6 +149,7 @@ function Collectcards() {
   });
   final+="</center>"
   sessionStorage.setItem("cards", final)
+  window.location.href = "techstack.html"
 }
 //saves the username the user puts in
 function addUsername() {

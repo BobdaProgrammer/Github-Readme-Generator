@@ -159,3 +159,23 @@ html{
     border-radius: 0.3em;
     box-shadow: 0 0 20px #03f490;
 }
+.languages{
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+.lang{
+    display: inline-flex;
+    user-select: none;
+    border: 2px solid#217753;
+    margin: 4px;
+    padding: 2px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: border 0.4s ease, box-shadow 0.5s ease;
+ }
+
+ .lang:hover{
+    box-shadow: 5px 5px #23dc73;
+ }
