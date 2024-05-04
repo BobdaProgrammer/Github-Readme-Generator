@@ -42,7 +42,7 @@ html{
     background-color: transparent;
     border: none;
     outline: none;
-    width: 17em;
+    width: 20em;
     border-bottom: 1px solid #38C88C;
     color: #38C88C;
     margin-left: 30px;
@@ -72,7 +72,7 @@ html{
 }
 
 .checkcon label:hover::before{
-    background-color: #03f490;
+    background-color: #006038;
 }
 .checkcon input[type="checkbox"]:focus + label::before{
    box-shadow: 0 0 10px #38C88C; 
@@ -96,12 +96,13 @@ html{
     --tw-bg-opacity: 1;
     background-color: rgb(24 24 27/var(--tw-bg-opacity))
 }
-.theme{
+.theme, .trophytheme, .quotetheme{
     background-color: transparent;
     outline: none;
     color: #38C88C;
     border:none;
 }
+
 ::-webkit-scrollbar {
     background-color: transparent;
     width: .7em;
@@ -130,7 +131,29 @@ html{
 ::-webkit-scrollbar-corner {
     background-color: transparent
 }
-
+.slider{
+    height: 0.75em;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #00a078;
+    border-radius: 4px;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 1.25em; /* Set a specific slider handle width */
+    height: 1.25em; /* Slider handle height */
+    background: #03f490; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 1.25em;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 1.25em; /* Set a specific slider handle width */
+    height: 1.25em; /* Slider handle height */
+    background: #03f490; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
 .switch{
     border-radius: 7px;
     border: 2px solid #03f490;
@@ -178,4 +201,25 @@ html{
 
  .lang:hover{
     box-shadow: 5px 5px #23dc73;
+ }
+
+ .socialusername{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #23dc73;
+    outline: none;
+    color: white;
+    width: 45%;
+    height: 1.5em;
+    margin-bottom: 5px;
+    margin-top: 5px;
+ }
+ .socialimg{
+    height: 3em;
+    width: 3em;
+ }
+
+ .donateimg{
+    max-height: 2.85em;
+    width: 4em;
  }
