@@ -61,16 +61,23 @@ function TheFinalPiece() {
   let final = "";
   if (about != "") { final += "<h1>About Me:</h1>" + about+"<br><br>" }
   if (addons != "") {
+    addons = addons.replace(
+      /<img/g,
+      "<img style='max-width:90%; display:block;'"
+    );
     final += addons;
   }
   if (stats != "") {
-    final += "<h1>My Github Stats:</h1>"+stats;
+    stats = stats.replace(
+        /<img/g,
+        "<img style='max-width:90%; display:block;'"
+    );
+    final += "<h1>My Github Stats:</h1>" + stats;
   }
   if (techstack != "") {
     final += "<h1>My Techstack:</h1>" + techstack;
   }
   console.log(final)
-  final = final.replace(/<img/g, "<img style='max-width:90%; display:block;'");
   codeArea.innerHTML = final
 }
 
@@ -301,7 +308,7 @@ function TechStack() {
     let color = lang.style.border;
     console.log(color);
     if (color == "2px solid rgb(0, 255, 110)") {
-        final += `<img src="${lang.src}">`
+        final += `<img style="display: flexbox; margin-left: 2px" src="${lang.src}">`
     }
   });  
   localStorage.setItem("techstack", final);
