@@ -82,6 +82,13 @@
         <label for="funfact">⚡ Fun fact: </label>
         <input type="text" class="funfact answer" placeholder="fun fact" readonly> 
     </div>
+    <br>
+    <br>
+    <div class="extrastuff">
+        <input type="checkbox" id="extra" class="checkbox cent" onclick="readonly(this, document.querySelectorAll('.funfact'))">
+        <label for="extra" style="display: inline-flex;" >extra stuff: </label>
+        <div class="extradiv"><textarea class="extra" placeholder="anything else?"></textarea>
+    </div></div>
     <p class="cyan"><a class="noshow" onclick="about()">→</a></p>
 </div>
     <script src="index.js"></script>

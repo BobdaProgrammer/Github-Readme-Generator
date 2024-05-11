@@ -13,18 +13,18 @@ let margin = 4;
 function getResult(name) {
   let i = 1;
   let res = ""
-  if (document.querySelectorAll("."+name).length > 1) {
-    document.querySelectorAll("." + name).forEach(answer => {
-      if (i == 1) {
-        res += ("<a href=''>"+answer.value + "</a>")
-      } else {
-        res = (res.slice(0,9)+answer.value+res.slice(9,res.length))
+  if (document.querySelectorAll("." + name).length > 1&&document.querySelectorAll("." + name)[1].value != "") {
+      document.querySelectorAll("." + name).forEach(answer => {
+        if (i == 1) {
+          res += ("<a href=''>" + answer.value + "</a>")
+        } else {
+          res = (res.slice(0, 9) + answer.value + res.slice(9, res.length))
+        }
+        i++
+      })
+      if (i == 2) {
+        res = document.querySelector("." + name).value
       }
-      i++
-    })
-    if (i == 2) {
-      res = document.querySelector("."+name).value
-    }
   } else {
     res = document.querySelector("."+name).value
   }
@@ -49,6 +49,31 @@ function setTrophy(trophy, username, theme, Hideborder, Hidebackground,margin) {
   trophy.src = `https://github-profile-trophy.vercel.app/?username=${username}&theme=${theme}&no-bg=${Hidebackground}&no-frame=${Hideborder}&margin-w=${margin}`;
 }
 
+function TheFinalPiece() {
+  let codeArea = document.querySelector(".container").children[0];
+  let about = localStorage.getItem("about");
+  let stats = localStorage.getItem("cards")
+  let addons = localStorage.getItem("addons");
+  let social = localStorage.getItem("social");
+  let donate = localStorage.getItem("donate");
+  let techstack = localStorage.getItem("techstack");
+  console.log(about, addons, social, donate, techstack);
+  let final = "";
+  if (about != "") { final += "<h1>About Me:</h1>" + about+"<br><br>" }
+  if (addons != "") {
+    final += addons;
+  }
+  if (stats != "") {
+    final += "<h1>My Github Stats:</h1>"+stats;
+  }
+  if (techstack != "") {
+    final += "<h1>My Techstack:</h1>" + techstack;
+  }
+  console.log(final)
+  final = final.replace(/<img/g, "<img style='max-width:90%; display:block;'");
+  codeArea.innerHTML = final
+}
+
 //set up github profile cards
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".lang").forEach((lang) => {
@@ -61,7 +86,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
-  if (window.location.pathname == "/stats.html") {
+  if (window.location.pathname == "/ending.html") {
+    TheFinalPiece();
+  }
+  else if (window.location.pathname == "/stats.html") {
     document.getElementById("border").addEventListener("change", function () {
       if (Hideborder) {
         Hideborder = false;
@@ -71,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
       text = Hideborder.toString();
       setCard(username, theme, text, lifetext, langsLayout);
     });
-    username = sessionStorage.getItem("username")
+    username = localStorage.getItem("username")
     setCard(username, theme, text, lifetext, langsLayout)
     document.querySelectorAll(".stat").forEach(stat => {
       stat.style.display = "inline-flex"
@@ -80,12 +108,15 @@ document.addEventListener("DOMContentLoaded", function () {
   else if (window.location.pathname == "/techstack.html") {
     document.getElementById("stack").addEventListener("change", function (event) {
       var stackTheme = event.target.value;
-      document.querySelectorAll(".lang").forEach(lang=> {
+      document.querySelectorAll(".lang").forEach(lang => {
+        //https://img.shields.io/badge/Apache%20Groovy-4298B8.svg?style=for-the-badge&logo=Apache+Groovy&logoColor=white
         let src = lang.src.split("style=");
-        let style = src[1].split("&")
+        //["https://img.shields.io/badge/Apache%20Groovy-4298B8.svg?", "for-the-badge&logo=Apache+Groovy&logoColor=white"]
+        let style = src[1].split("&");
+        //["for-the-badge","logo=Apache+Groovy","logoColor=white"]
         style = style.slice(1, style.length);
-        let newString = src[0] + `style=${stackTheme}&` + style
-        console.log(newString)
+        let newString = src[0] + `style=${stackTheme}&` + style.join("&");
+        console.log(newString);
         lang.src = newString;
       });
     })
@@ -141,6 +172,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+function finishHim() {
+  let final = "";
+  if (document.getElementById("usetrophy").checked) {
+    let trophy = document.getElementById("trophy").src;
+    final += `<img src="${trophy}"><br>`
+  }
+  if (document.getElementById("usequotes").checked) {
+    let quote = document.getElementById("quote").src;
+    final += `<h1>Random dev quote:</h1><img src="${quote}"><br>`;
+  }
+  localStorage.setItem("addons", final)
+  window.location.href = "ending.html";
+}
 
 //updates github profile cards to user's preferances
 document.getElementById("topLang").addEventListener("change", function (event) {
@@ -192,19 +236,21 @@ function about() {
   let blog = document.getElementById("blog").checked
   let exp = document.getElementById("exp").checked
   let funfact = document.getElementById("funfact").checked
+  let extra = document.getElementById("extra").checked
   let final = `<center><h2>Hi 👋, I am ` + username+`</h2><br>`;
-  if(currworkon) final += "🔭 I'm currently working on " + getResult("currworkon")+"<br>";
-  if(collon) final += "👯 I’m looking to collaborate on " + getResult("collon") + "<br>"; 
-  if (help) final += "🤝 I’m looking for help with " + getResult("help") + "<br>";
-  if (learn) final += "🌱 I’m currently learning "; + getResult("learn") + "<br>";
-  if (about) final += "💬 Ask me about " + getResult("ab") +"<br>";
-  if (reach) final += "📫 How to reach me " + getResult("reach") + "<br>";
-  if (proj) final += "👨‍💻 All of my projects are available at " + getResult("proj") + "<br>";
-  if (blog) final += "📝 I regularly write articles on " + getResult("blog") + "<br>";
-  if (exp) final += "📄 See my resume " + getResult("exp") + "<br>";
-  if (funfact) final += "⚡ Fun fact: " + getResult("funfact") +"<br>";
+  if(currworkon) final += "🔭 I'm currently working on <strong>" + getResult("currworkon")+"</strong><br>";
+  if(collon) final += "👯 I’m looking to collaborate on <strong>" + getResult("collon") + "</strong><br>"; 
+  if (help) final += "🤝 I’m looking for help with <strong>" + getResult("help") + "</strong><br>";
+  if (learn) final += "🌱 I’m currently learning <strong>" + getResult("learn") + "</strong><br>";
+  if (about) final += "💬 Ask me about <strong>" + getResult("ab") +"</strong><br>";
+  if (reach) final += "📫 How to reach me <strong>" + getResult("reach") + "</strong><br>";
+  if (proj) final += "👨‍💻 All of my projects are available at <strong><a href='"+getResult("proj")+"'>" + getResult("proj") + "</a></strong><br>";
+  if (blog) final += "📝 I regularly write articles on <strong><a href='"+getResult("blog")+"'>" + getResult("blog") + "</a></strong><br>";
+  if (exp) final += "📄 See my resume <strong><a href='"+getResult("exp")+"'>" + getResult("exp") + "</a></strong><br>";
+  if (funfact) final += "⚡ Fun fact: <strong>" + getResult("funfact") + "</strong><br>";
+  if (extra) final += document.querySelector(".extra").innerText;
   final+="</center>"
-  sessionStorage.setItem("about", final)
+  localStorage.setItem("about", final)
   window.location.href="stats.html"
 }
 //adds cards img to the final file
@@ -216,7 +262,7 @@ function Collectcards() {
     }
   });
   final+="</center>"
-  sessionStorage.setItem("cards", final);
+  localStorage.setItem("cards", final);
   window.location.href = "techstack.html";
 }
 
@@ -229,7 +275,7 @@ function socialmedia() {
     }
   });
   console.log(final);
-  localStorage.setItem("social", final)
+  localStorage.setItem("social", JSON.stringify(final))
   window.location.href = "donate.html"
 }
 
@@ -243,7 +289,7 @@ function donate() {
       final[donateAcc.id] = donateAcc.children[0].value;
     }
   })
-  localStorage.setItem("donate", final)
+  localStorage.setItem("donate", JSON.stringify(final))
   console.log(final)
   window.location.href = "additional.html";
 }
@@ -265,7 +311,7 @@ function TechStack() {
 //saves the username the user puts in
 function addUsername() {
   if (document.getElementById("username").value != "") {
-    sessionStorage.setItem("username", document.querySelector(".user").value)
+    localStorage.setItem("username", document.querySelector(".user").value)
     window.location.href = "about.html";
   }
 }
