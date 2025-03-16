@@ -142,26 +142,30 @@ function TheFinalPiece() {
   if (techstack != "") {
     final += "<h1>My Techstack:</h1>" + techstack;
   }
-  if (social != ""){
-      social = JSON.parse(social)
-      let socialsHTML = "<h1>Socials:</h1>"
-      for(let [account, value] of Object.entries(social)){
-            let finalLink = links[account]+value
-            let badge = linkbadges[account]
-            socialsHTML += `<a href="${finalLink}"><img src="${badge}" style="display: flexbox; margin-left: 2px;"></a>`
-      }
-      final+=socialsHTML
-  }
-   if (donate != ""){
-      donate = JSON.parse(donate)
-      let donateHTML = "<h1>Consider Donating!</h1>"
-      for(let [account, value] of Object.entries(donate)){
-            let finalLink = links[account]+value
-            let badge = linkbadges[account]
-            donateHTML += `<a href="${finalLink}"><img src="${badge}" style="display: flexbox; margin-left: 2px;"></a>`
-      }
-      final+=donateHTML
-  }
+    if (social != ""){
+        social = JSON.parse(social)
+        if(social!={}){
+            let socialsHTML = "<h1>Socials:</h1>"
+            for(let [account, value] of Object.entries(social)){
+                let finalLink = links[account]+value
+                let badge = linkbadges[account]
+                socialsHTML += `<a href="${finalLink}"><img src="${badge}" style="display: flexbox; margin-left: 2px;"></a>`
+            }
+            final+=socialsHTML
+        }
+    }
+    if (donate != ""){
+        donate = JSON.parse(donate)
+        if(donate!={}){
+            let donateHTML = "<h1>Consider Donating!</h1>"
+            for(let [account, value] of Object.entries(donate)){
+                let finalLink = links[account]+value
+                let badge = linkbadges[account]
+                donateHTML += `<a href="${finalLink}"><img src="${badge}" style="display: flexbox; margin-left: 2px;"></a>`
+            }
+            final+=donateHTML
+        }
+    }
   final+="</div>"
   console.log(final)
   codeArea.innerHTML = final
